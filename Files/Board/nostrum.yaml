@@ -1,0 +1,323 @@
+units:
+  capx: 17.5   # Actual mbk size
+  capy: 16.5   # Actual mbk size
+  thumbcapx: 26.5 # Actual mbk 1.5u length
+  kx: cx + 0.5    # Key spacing horizontal
+  ky: cy + 0.5    # Key spacing vertical
+  pinky_splay: 3  # Degrees of splay between pinky and ring columns
+  pinky_adj: -10   # Adjustment to compensate for splay spacing
+  ring_splay: 3
+  ring_adj: -8
+  middle_splay: 0
+  middle_adj: 0
+  thumb_offsetx: 0.25kx
+  promicro_x: 33
+  promicro_y: 18
+  outx: 0.5capx +1  # Used for plate outlines
+  outy: 0.5capy +1  # Used for plate outlines
+
+points:
+  zones.matrix:
+    anchor:
+      rotate: ring_splay + pinky_splay
+    key:
+      width: capx
+      height: capy
+      spread: cx      
+      padding: cy
+      autobind: false
+    rows:
+      bottom.bind: [1, 1, 1, 1]
+      home.bind: [1, 1.5, 0, 1]
+      top.bind: [1, 2, 0, 1]
+    columns:
+      pinky:
+        rows:
+          bottom.bind: [1, 1, 1, 1]
+          home.bind: [1, 1.5, 0, 1]
+          top.bind: [1, 2, 0, 1]
+      ring:
+        key:
+          stagger: 0.55U
+          splay: -pinky_splay
+          origin: [0, pinky_adj]
+        rows:
+          bottom.bind: [1,1.5,11.9,0]
+          home.bind: [1,1.5,0,1]
+          top.bind: [1,2,1,1]
+      middle:
+        key:
+          stagger: 0.25U
+          splay: -ring_splay
+          origin: [0, ring_adj]
+        rows:
+          bottom.bind: [1,1,17.1,0]
+          home.bind: [1,1,0,1]
+          top.bind: [1,1,0,1]
+      index:
+        key.stagger: -0.25U
+        rows:
+          bottom.bind: [1,1,12.341,1]
+          home.bind: [1,1,0,1]
+          top.bind: [1,1,0,1]
+      inner:
+        key.stagger: 0.5ky
+        rows:
+          top.skip: true
+          bottom.bind: [1,2,22.590471307,1]
+          home.bind: [1,2,20,1]
+  zones.thumb:
+    anchor:
+      ref: matrix_index_top
+      shift: [0.6u,-57]
+      rotate: -20
+    key:
+      width: capx
+      height: capy
+      autobind: false
+    rows:
+      home:
+    columns:
+      left.key:
+        name: thumb_tucky
+        bind: [0,3,1,1] # U,R,D,L
+      right.key:
+        spread: kx+0.2
+        stagger: 0.225kx
+        rotate: -95
+        name: thumb_reachy
+        bind: [1,1,2,1.2191] # R,D,L,U
+
+  # MCU
+  zones.mcu:
+    anchor:
+      ref: matrix_inner_home
+      shift: [19.5,-0.5cx]
+      rotate: -90
+    key:
+      width: promicro_x
+      height: promicro_y
+      autobind: false
+  # Power slider
+  zones.pcm12:
+    anchor:
+      - ref: mcu
+        shift: [0.5promicro_x + 12, 0.4promicro_y + 1]
+        rotate: 180
+    key:
+      name: pcm12
+      height: 2.6
+      width: 6.7
+  # Reset switch
+  zones.reset:
+    anchor:
+      - ref: mcu
+        shift: [.5promicro_x + 4, -0.5promicro_y + 10]    
+    key:
+      name: reset
+      height: 3
+      width: 2.5
+  # JST
+  zones.bat:
+    anchor:
+      - ref: mcu
+        shift: [0.5promicro_x + 3.5, -0.5promicro_y + 3.25]
+        rotate: 90
+    key:
+      name: bat
+      height: 5
+      width: 4.5
+
+  # Mounting Holes
+  zones.mount_tl:
+    anchor:
+      - ref: matrix_ring_home
+        shift: [-0.5cx -0.95,0.5cy]
+    key:
+      name: mounthole_tl
+      height: 2.2
+      width: 2.2
+      footprints:
+  zones.mount_tr:
+    anchor:
+      - ref: matrix_inner_bottom
+        shift: [-0.5cx,0.5cy]
+    key:
+      name: mounthole_tr
+      height: 2.2
+      width: 2.2
+  zones.mount_tm:
+    anchor:
+      - ref: matrix_middle_top
+        shift: [-0.5cx -1.1,0]
+    key:
+      name: mounthole_tm
+      height: 2.2
+      width: 2.2
+  zones.mount_bl:
+    anchor:
+      - ref: matrix_ring_bottom
+        shift: [-0.46cx,-0.6cy+1]
+    key:
+      name: mounthole_bl
+      height: 2.2
+      width: 2.2
+  zones.mount_br:
+    anchor:
+      - ref: thumb_reachy
+        orient: 95
+        shift: [outx -4,-outy -3]
+    key:
+      name: mounthole_br
+      height: 2.2
+      width: 2.2
+
+outlines:
+  _casecuts:
+    - what: rectangle
+      where:
+        - /matrix_.*/
+        - /thumb_.*/
+      size: [ 13.85, 13.85]
+      bound: false
+  _keycapsbound:
+    - what: rectangle
+      where:
+        - /matrix_.*/
+        - /thumb_tucky/
+      size: [capx, capy]
+      bound: true
+    - what: rectangle
+      where:
+        - /thumb_reachy/
+      size: [thumbcapx, 1capy]
+      bound: true
+  _keycapsunbound:
+    - what: rectangle
+      where:
+        - /matrix_.*/
+        - /thumb_tucky/
+      size: [capx, capy]
+      bound: false
+    - what: rectangle
+      where:
+        - /thumb_reachy/
+      size: [thumbcapx, 1capy]
+      bound: false
+    - what: rectangle
+      where:
+        - /mcu/
+      size: [promicro_x,promicro_y]
+      bound: false
+  _mcu:
+    - what: rectangle
+      where: mcu
+      size: [promicro_x, promicro_y]
+  _mcu_extra:
+    - what: polygon
+      bound: true
+      operation: stack
+      points:
+        - ref: matrix_inner_home
+          shift: [0.5capx, 0.5capy+1]
+        - ref: matrix_inner_home
+          shift: [29.5, 0.5capy+1]
+        - ref: thumb_reachy
+          shift: [-16.355,0]
+          affect: y
+        - ref: thumb_reachy
+          orient: -95
+          shift: [-0.5capy-1,0]
+        - ref: thumb_reachy
+          orient: -95
+          shift: 10
+  _mountholes:
+    - what: circle
+      where: /mount.*/
+      radius: 1.1
+  _platecut:
+    - ^_keycapsbound
+    - _mcu_extra
+  plate:
+    - name: _platecut
+      fillet: 2
+  preview:
+    - ^plate
+    - ^_keycapsunbound
+    - ^_mountholes
+  case:
+    - ^plate
+    - ^_casecuts
+    - ^_mcu
+    - ^_mountholes
+
+pcbs.bennyv2:
+  outlines.main:
+    outline: plate
+  footprints:
+    - what: choc
+      where:
+        - /matrix_.*/
+        - /thumb_.*/
+      adjust.rotate: 180
+      params:
+        from: GND
+        to: "{{name}}"
+        reverse: true
+        keycaps: true
+        hotswap: true
+    - what: choc
+      where:
+        - /matrix_.*/
+        - /thumb_.*/
+      params:
+        from: GND
+        to: "{{name}}"
+        reverse: true
+        keycaps: true
+    - what: promicro
+      where:
+        ref: mcu
+        shift: [1, 0]
+      params:
+        orientation: down
+        P5: matrix_pinky_top
+        P2: matrix_ring_top
+        P21: matrix_middle_top
+        P20: matrix_index_top
+        P19: matrix_inner_home
+        P6: matrix_pinky_home
+        P3: matrix_ring_home
+        P16: matrix_middle_home
+        P18: matrix_index_home
+        P15: matrix_inner_bottom
+        P7: matrix_pinky_bottom
+        P4: matrix_ring_bottom
+        P10: matrix_middle_bottom
+        P14: matrix_index_bottom
+        P8: thumb_tucky
+        P9: thumb_reachy
+    - what: jstph
+      where:
+        ref: bat
+      params:
+        pos: pos
+        neg: GND
+    - what: button
+      where:
+        ref: reset
+      adjust.rotate: 90
+      params:
+        from: RST
+        to: GND
+    - what: slider
+      where:
+        ref: pcm12
+      params:
+        from: pos
+        to: RAW
+    - what: via
+      where:
+        - /mount.*/
+      params:
+        net: ""
