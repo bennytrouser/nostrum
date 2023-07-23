@@ -6,7 +6,7 @@ A 32 key ergo split keyboard with minimal splay.
 ## PCB
 | Top  | Bottom |
 | ------------- | ------------- |
-| ![](./images/top.png)  | ![](./images/bottom.png) |
+| ![](Images/top.png)  | ![](Images/bottom.png) |
 
 ## Keymap
 ColemakDH based with some questionable modifications.
