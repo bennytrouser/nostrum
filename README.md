@@ -22,6 +22,8 @@ ColemakDH Based
 - There is a hole on the base of the case to use a paper clip to activate the manual reset.
 - The "feet" on the base are made from 1mm silicone rubber sheet as I prefer this to the standard bumpons.
 
+## Warning
+
 This is not a finished design. It is fully functional but there are some minor issues that need addressing, mainly due to compatibility with cases. I have included the STL files I used for this build but I do not recommend anyone use them in the current form because of the following:
 - If using choc hotswap sockets, you need to manually add a couple of notches for it to fit.
 - The mount hole under the inner (reachy) thumb needs moving in a bit. Current location makes the case too fragile for resin printed cases and it cracks when inserting the heat insert.
