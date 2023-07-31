@@ -1,4 +1,6 @@
 units:
+  # capx: 17        # Key cap size horizontal
+  # capy: 16        # Key cap size vertical
   capx: 17.5   # Actual mbk size
   capy: 16.5   # Actual mbk size
   thumbcapx: 26.5 # Actual mbk 1.5u length
@@ -165,8 +167,7 @@ points:
   zones.mount_br:
     anchor:
       - ref: thumb_reachy
-        orient: 95
-        shift: [outx -4,-outy -3]
+        shift: [0.5 thumbcapx -3,0.5 capy -3]
     key:
       name: mounthole_br
       height: 2.2
