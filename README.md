@@ -23,6 +23,6 @@ ColemakDH Based
 - The "feet" on the base are made from 1mm silicone rubber sheet as I prefer this to the standard bumpons.
 
 ## Warning
-The original case was experimental. As such I have removed the filed for the top part of the case and updated the bottom part that works great as a minimal bottom "tray". I have updated the STLs and pcb to avoid weakness on the mounting and to fix an issue with hotswaps causing fitment issues but I have not done a test print.
+The original case was experimental. As such I have removed the files for the top part of the case and updated the bottom part that works great as a minimal bottom "tray". I have updated the STLs and pcb to avoid weakness on the mounting and to fix an issue with hotswaps causing fitment issues but I have not done a test print.
 
 
