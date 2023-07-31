@@ -18,14 +18,11 @@ ColemakDH Based
 ![](Images/keymap.png)
 
 ## Notes
-- If using with the case, the reset and power switch are mounted on the under side. 
-- There is a hole on the base of the case to use a paper clip to activate the manual reset.
+- The reset and power switch can be mounted on either side. I think it works better with the case/bottom plate. 
+- There is a hole on the base of the case to use a paper clip to activate the manual reset if mounted on the underside.
 - The "feet" on the base are made from 1mm silicone rubber sheet as I prefer this to the standard bumpons.
 
 ## Warning
+The original case was experimental. As such I have removed the filed for the top part of the case and updated the bottom part that works great as a minimal bottom "tray". I have updated the STLs and pcb to avoid weakness on the mounting and to fix an issue with hotswaps causing fitment issues but I have not done a test print.
 
-This is not a finished design. It is fully functional but there are some minor issues that need addressing, mainly due to compatibility with cases. I have included the STL files I used for this build but I do not recommend anyone use them in the current form because of the following:
-- If using choc hotswap sockets, you need to manually add a couple of notches for it to fit.
-- The mount hole under the inner (reachy) thumb needs moving in a bit. Current location makes the case too fragile for resin printed cases and it cracks when inserting the heat insert.
-- The hole for the usb needs to be slightly lower and larger. Currently you need to lift the nice!nano up a bit to align the usb with the hole and some usb cables won't fit. It is perfect for the rectangular shaped magnetic connectors shown in the pics though.
 
