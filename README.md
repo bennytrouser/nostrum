@@ -5,6 +5,7 @@ A 32 key ergo split keyboard with minimal splay.
 - Created with the wonderful [ergogen](https://github.com/ergogen/ergogen) and KiCad7. Case files created with Autodesk Fusion360.
 
 ![](Images/main.jpg)
+![](Images/wide.jpg)
 
 
 ## PCB
